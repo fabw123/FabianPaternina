@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Prueba.Veterinaria.Models.TareaViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado completo de tareas</h2>
+
+<div class="col-md-2">
+    <input type="button" value="Asignar nueva tarea" class="btn" onclick="location.href='@Url.Action("Crear", "MascotaTareas")'" />
+</div>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Mascota
+        </th>
+        <th>
+            Tarea
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora)
+        </th>
+        <th>
+            Precio
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mascota.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarea.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarea.Valor)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.IdMascotaTarea }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.IdMascotaTarea })
+        </td>
+    </tr>
+}
+
+</table>

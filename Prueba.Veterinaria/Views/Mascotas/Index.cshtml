@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Prueba.Veterinaria.Entities.Mascota>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Mascotas</h2>
+
+
+
+<div class="col-md-2">
+    <input type="button" value="Agregar nueva mascota" class="btn" onclick="location.href='@Url.Action("Crear", "Mascotas")'" />
+</div>
+
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Raza
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apodo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raza.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.IdMascota }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.IdMascota }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdMascota })
+            </td>
+        </tr>
+    }
+
+</table>

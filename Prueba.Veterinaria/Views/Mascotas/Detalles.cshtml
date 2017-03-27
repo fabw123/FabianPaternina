@@ -1,0 +1,97 @@
+﻿@model Prueba.Veterinaria.Entities.Mascota
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Nombre) </h2>
+<br />
+<br />
+<div class="form-group">
+    @Html.Label("Foto", new { @class = "col-md-2 control-label" })
+    <div class="col-md-10 image">
+        <img src="@String.Format("/FotoMascotas/{0}.{1}", Model.IdMascota, "jpg")" />
+    </div>
+</div>
+<br />
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Raza
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Raza.Nombre)
+        </dd>
+
+        <dt>
+            Sexo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apodo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+
+    </dl>
+</div>
+<br />
+<h4>Tareas asignadas</h4>
+<hr />
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Tarea
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Hora
+            </th>
+            <th>
+                Precio
+            </th>
+        </tr>
+
+        @foreach (var item in (List<Prueba.Veterinaria.Models.TareaViewModel>)ViewBag.Tareas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarea.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarea.Valor)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.IdMascota }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

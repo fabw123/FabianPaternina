@@ -1,0 +1,55 @@
+﻿@model Prueba.Veterinaria.Models.TareaViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Desasignar tarea</h2>
+
+<h3>Está seguro que desea desasignar la tarea de su mascota?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Mascota
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mascota.Nombre)
+        </dd>
+
+        <dt>
+           Tarea
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarea.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Desasignar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    }
+</div>

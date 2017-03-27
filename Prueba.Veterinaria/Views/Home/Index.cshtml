@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Prueba.Veterinaria.Models.HomeViewModel>
+
+@{
+    ViewBag.Title = "Inicio";
+}
+<h3>Bienvenido</h3>
+<hr />
+<h4>
+    <b>Costo Total del dia:</b>
+    @ViewBag.CostoTotalDia
+</h4>
+<br />
+<h4>Información General</h4>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Raza", "Index", new { sortOrder = ViewBag.OrderRaza })
+        </th>
+        <th>
+            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.OrderMascota })
+        </th>
+        <th>
+           @Html.ActionLink("Apodo", "Index", new { sortOrder = ViewBag.OrderApodo })
+        </th>
+        <th>
+            @Html.ActionLink("Costo total", "Index", new { sortOrder = ViewBag.OrderCosto })
+        </th>
+        <th>
+            @Html.ActionLink("Fecha proxima tarea", "Index", new { sortOrder = ViewBag.OrderFecha })
+        </th>
+        <th>
+            @Html.ActionLink("Tareas pendientes del día", "Index", new { sortOrder = ViewBag.OrderPendiente })
+        </th>
+        <th>
+            @Html.ActionLink("Porcentaje tareas realizadas del dia", "Index", new { sortOrder = ViewBag.OrderPorcentaje })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Raza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mascota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apodo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProximaTarea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pendientes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PorcentajeRealizadas)
+            </td>
+
+        </tr>
+    }
+
+</table>
